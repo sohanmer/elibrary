@@ -1,0 +1,1 @@
+<h1>Verify Email To Activate Account</h1><?php /**PATH C:\wamp64\www\eLibrary\resources\views/verifyEmailFirst.blade.php ENDPATH**/ ?>

@@ -1,0 +1,141 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Genre;
+use DB;
+use Auth;
+use App\Books;
+
+class BooksController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home')->with('books',Books::all());
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $genres = Genre::all();
+
+        return view('admin.books.addBooks')->with('genres',$genres);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        
+        if($request->hasFile('thumbnail')){
+            $this->validate($request,[
+                'thumbnail' => 'mimes:jpeg,jpg,png,gif|required|max:10000'
+            ]);
+            $name = $request->thumbnail->getClientOriginalName();
+            $path = $request->file('thumbnail')->storeAs(
+                'public/thumbnails', $name
+            );
+           
+        }
+        else{
+            $name = '';
+        }
+        DB::table('books')->insertOrIgnore([
+
+            'isbn'=>$request->isbn,
+            'name'=>$request->name,
+            'author'=>$request->author,
+            'length'=>$request->length,
+            'edition'=>$request->edition,
+            'thumbnail'=>$name
+
+        ]);
+        return redirect('home');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Books $book)
+    {
+        $genres = Genre::all();
+        return view('admin.books.editBook')->with('book',$book)->with('genres',$genres);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Books $book)
+    {
+        if($request->hasFile('thumbnail')){
+           // Storage::delete(asset('storage/thumbnails/'.$book->thumbnail));
+            $this->validate($request,[
+                'thumbnail' => 'mimes:jpeg,jpg,png,gif|required|max:10000'
+            ]);
+            $name = $request->thumbnail->getClientOriginalName();
+            $path = $request->file('thumbnail')->storeAs(
+                'public/thumbnails', $name
+            );
+           
+        }
+        else{
+            $name = $book->thumbnail;
+        }
+        $book->update([
+            'isbn'=>$request->isbn,
+            'name'=>$request->name,
+            'author'=>$request->author,
+            'length'=>$request->length,
+            'edition'=>$request->edition,
+            'thumbnail'=>$name
+        ]);
+        return redirect('home');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {   
+        
+        DB::table('books')->where('id',$id)->delete();
+
+        return redirect('home');
+    }
+}

@@ -1,0 +1,1 @@
+To Verify Email Click here<?php /**PATH C:\wamp64\www\eLibrary\resources\views/sendView.blade.php ENDPATH**/ ?>
