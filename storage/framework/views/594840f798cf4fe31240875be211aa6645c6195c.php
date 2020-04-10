@@ -5,8 +5,27 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h3>Available Books</h3></div>
-
+                <div class="card-header row">
+                    <div class="col col-md-8">
+                        <h3>Available Books</h3>
+                    </div>
+                    <div class=" form-group col-md-3">
+                        <form action="/filter" method="GET" >
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <select class="form-control" name="filter">
+                                        <option value="all"> All</option>
+                                        <?php $__currentLoopData = $genres; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($genre->id); ?>"><?php echo e($genre->name); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="submit" value="Filter" class="btn btn-primary">
+                                </div>
+                        </form>
+                    </div>
+                </div>
                 <div class="card-body">
                     <?php if(session('status')): ?>
                         <div class="alert alert-success" role="alert">
@@ -25,8 +44,7 @@
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read-books')): ?>
                                     <div class="container-fluid">                                                                                                  
                                        <div class="row"> 
-                                           
-                                            <?php
+                                           <?php
                                                 $flag = 0;
                                             ?>
                                             <?php if(isset($readBooks)): ?>

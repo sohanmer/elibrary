@@ -6,6 +6,7 @@ use App\UserBook;
 use Illuminate\Http\Request;
 use App\Books;
 use Auth;
+use App\Genre;
 
 class UserBookController extends Controller
 {
@@ -18,7 +19,8 @@ class UserBookController extends Controller
     {
         return view('admin.users.userBook')
                 ->with('books',Books::all())
-                ->with('readBooks',Auth::user()->books->pluck('id'));
+                ->with('readBooks',Auth::user()->books->pluck('id'))
+                ->with('genres',Genre::all());
     }
 
     /**
@@ -50,9 +52,27 @@ class UserBookController extends Controller
      */
     public function show($id)
     {
-        return view('admin.users.readBooks')
+        if($id==1){
+            return view('admin.users.readBooks')
                     ->with('books',Books::all())
                     ->with('readBooks',Auth::user()->books->pluck('id'));
+        }
+        else{
+            $books = Books::select('id')->get();
+            $unread = $books->reject(function($book){
+                $reads = Auth::user()->books()->get();
+                foreach($reads as $read){
+                    if($read->id == $book->id)
+                        return true;
+                    
+                        return false;
+                }
+            });
+           
+            return view('admin.users.readBooks')
+                    ->with('books',Books::all())
+                    ->with('readBooks',$unread->pluck('id'));
+        }
     }
 
     /**
@@ -84,7 +104,8 @@ class UserBookController extends Controller
         
         return view('admin.users.userBook')
                 ->with('readBooks',$user->books->pluck('id'))
-                ->with('books',Books::all());
+                ->with('books',Books::all())
+                ->with('genres',Genre::all());
     }
 
     /**
@@ -103,6 +124,7 @@ class UserBookController extends Controller
         
         return view('admin.users.userBook')
                 ->with('readBooks',$user->books->pluck('id'))
-                ->with('books',Books::all());
+                ->with('books',Books::all())
+                ->with('genres',Genre::all());
     }
 }

@@ -62,7 +62,11 @@
                                         <?php echo e(__('Logout')); ?>
 
                                     </a>
+                                        
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage-books')): ?>
+                                        <a class="dropdown-item" href="/home"> 
+                                            View Books
+                                        </a>
                                         <a class="dropdown-item" href="<?php echo e(route('books.create')); ?>"> 
                                             Add Book
                                         </a>
@@ -72,7 +76,17 @@
                                             Manage Users
                                         </a>
                                     <?php endif; ?>
-
+                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read-books')): ?>
+                                        <a class="dropdown-item" href="<?php echo e(route('userBooks.index')); ?>"> 
+                                            All Books
+                                        </a>
+                                        <a class="dropdown-item" href="<?php echo e(route('userBooks.show',1)); ?>"> 
+                                            Already Read
+                                        </a>
+                                        <a class="dropdown-item" href="<?php echo e(route('userBooks.show',2)); ?>"> 
+                                            Unread
+                                        </a>
+                                    <?php endif; ?>
                                     <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                                         <?php echo csrf_field(); ?>
                                     </form>

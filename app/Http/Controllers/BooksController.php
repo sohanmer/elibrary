@@ -18,7 +18,8 @@ class BooksController extends Controller
      */
     public function index()
     {
-        return view('home')->with('books',Books::all());
+        return view('home')->with('books',Books::all())
+                            ->with('genres',Genre::all());
     }
 
     /**
@@ -55,7 +56,7 @@ class BooksController extends Controller
         else{
             $name = '';
         }
-        DB::table('books')->insertOrIgnore([
+        $book = Books::create([
 
             'isbn'=>$request->isbn,
             'name'=>$request->name,
@@ -65,6 +66,8 @@ class BooksController extends Controller
             'thumbnail'=>$name
 
         ]);
+        //dd($book);
+        $book->genres()->attach($request->genre);
         return redirect('home');
     }
 
@@ -76,7 +79,7 @@ class BooksController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -88,7 +91,10 @@ class BooksController extends Controller
     public function edit(Books $book)
     {
         $genres = Genre::all();
-        return view('admin.books.editBook')->with('book',$book)->with('genres',$genres);
+        return view('admin.books.editBook')
+                ->with('book',$book)
+                ->with('genres',$genres)
+                ->with('checkedGenres',$book->genres()->get()->pluck('name'));
     }
 
     /**
@@ -100,6 +106,7 @@ class BooksController extends Controller
      */
     public function update(Request $request, Books $book)
     {
+        $book->genres()->detach();
         if($request->hasFile('thumbnail')){
            // Storage::delete(asset('storage/thumbnails/'.$book->thumbnail));
             $this->validate($request,[
@@ -122,6 +129,7 @@ class BooksController extends Controller
             'edition'=>$request->edition,
             'thumbnail'=>$name
         ]);
+        $book->genres()->attach($request->genre);
         return redirect('home');
     }
 
@@ -131,11 +139,24 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Books $book)
     {   
+        $book->genres()->detach();
+        $book->delete();
         
-        DB::table('books')->where('id',$id)->delete();
-
         return redirect('home');
+    }
+    public function filter(Request $request)
+    {
+        if($request->filter != 'all'){
+            $genre = Genre::find($request->filter);
+            return view('home')->with('books',$genre->books()->get())
+                                ->with('genres',Genre::all());
+        }
+        else{
+            return view('home')->with('books',Books::all())
+                                ->with('genres',Genre::all());
+        }
+            
     }
 }

@@ -5,8 +5,27 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h3>Available Books</h3></div>
-
+                <div class="card-header row">
+                    <div class="col col-md-8">
+                        <h3>Available Books</h3>
+                    </div>
+                    <div class=" form-group col-md-3">
+                        <form action="/filter" method="GET" >
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <select class="form-control" name="filter">
+                                        <option value="all"> All</option>
+                                        @foreach($genres as $genre)
+                                            <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="submit" value="Filter" class="btn btn-primary">
+                                </div>
+                        </form>
+                    </div>
+                </div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
