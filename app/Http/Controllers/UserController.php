@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use DB;
+use App\Books;
 
 class UserController extends Controller
 {
@@ -80,9 +81,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        DB::table('users')->where('id',$id)->delete();
+        $user->books()->detach();
+        $user->delete();
         $users = User::all();
         return view('admin.users.userList')->with('users',$users);
     }

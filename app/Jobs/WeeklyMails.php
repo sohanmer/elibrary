@@ -9,6 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 Use App\User;
 use App\Notifications\SendWeeklyMails;
+use Carbon\Carbon;
 
 class WeeklyMails implements ShouldQueue
 {
@@ -32,14 +33,12 @@ class WeeklyMails implements ShouldQueue
     public function handle()
     {
         $users = User::all();
-        
         foreach($users as $user){
-            $lastTime = $user->books()->where('created_at','>=',DATEADD(day,-7,GETDATE()))->get();
-            dd($lastTime);
-            // if($lastTime){
-            //     $user->notify(new SendWeeklyMails($lastTime));        
-            // }
-        $user->notify(new SendWeeklyMails($lastTime));
+            $lastTime = $user->books()->where('books_user.created_at','>=',Carbon::now()->subDays(7))->get();
+            if(!($lastTime->isEmpty()))
+            {
+                $user->notify(new SendWeeklyMails($lastTime));
+            }
         }
     }
 }

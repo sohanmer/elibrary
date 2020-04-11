@@ -55,23 +55,24 @@ class UserBookController extends Controller
         if($id==1){
             return view('admin.users.readBooks')
                     ->with('books',Books::all())
-                    ->with('readBooks',Auth::user()->books->pluck('id'));
+                    ->with('readBooks',Auth::user()->books->pluck('id'))
+                    ->with('message','Books You Already Read');
         }
         else{
-            $books = Books::select('id')->get();
+            $books = Books::all();
             $unread = $books->reject(function($book){
                 $reads = Auth::user()->books()->get();
                 foreach($reads as $read){
-                    if($read->id == $book->id)
-                        return true;
-                    
+                    if($book->id == $read->id)
+                        return true;                
+                    }
                         return false;
-                }
             });
            
             return view('admin.users.readBooks')
                     ->with('books',Books::all())
-                    ->with('readBooks',$unread->pluck('id'));
+                    ->with('readBooks',$unread->pluck('id'))
+                    ->with('message','Books You Have Not Read');
         }
     }
 

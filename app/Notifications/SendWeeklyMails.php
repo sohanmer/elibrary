@@ -11,15 +11,15 @@ class SendWeeklyMails extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    protected $lastTime;
+    public $book;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($lastTime)
-    {
-        $this->$lastTime = $lastTime;
+    public function __construct($book){
+        
+        $this->book = $book;
     }
 
     /**
@@ -39,12 +39,19 @@ class SendWeeklyMails extends Notification implements ShouldQueue
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
+             
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    //->line($lastTime)
-                    ->line('Thank you for using our application!');
+        $books = '';
+        
+        foreach($this->book as $book){
+             $books = $books.$book->name.","; 
+        }
+        
+         return (new MailMessage)
+                    ->line('The Books you have completed this weeks are.')
+                    ->line($books)
+                    ->line('Keep Reading Keep Learning');
     }
 
     /**

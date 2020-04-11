@@ -5,8 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h3>Books You Already Read</h3></div>
-
+                <div class="card-header"><h3><?php echo e($message); ?></h3></div>
                 <div class="card-body">
                     <?php if(session('status')): ?>
                         <div class="alert alert-success" role="alert">
