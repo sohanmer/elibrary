@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\WeeklyMails;
+use App\Jobs\ReminderMails;
 use Auth;
 use Illuminate\Http\Request;
 use App\User;
 use Carbon\Carbon;
+use App\Books;
 
 class HomeController extends Controller
 {
@@ -26,20 +27,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {   
-        // $users=User::all();
-        // foreach($users as $user){
-        //     $lastTime = $user->books()->where('books_user.created_at','>=',Carbon::now()->subDays(7))->get();
-        //     //$user->notify(new SendWeeklyMails($lastTime));
-        //     $books = '';
-        // foreach($lastTime as $book){
-        //     $books = $books.$book->name.", "; 
-        // }
-        // dd($books);
-        // }
-        
-        
-        WeeklyMails::dispatch();
+    {         
+        //ReminderMails::dispatch();
         if(Auth::user()->hasRole('admin')){
             return redirect(route('books.index'));
         }
