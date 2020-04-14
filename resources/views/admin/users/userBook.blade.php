@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -34,9 +35,9 @@
                     @endif
                     <div class="row">                        
                         @foreach($books as $book)
-                            <div class="col-sm-3 book">
-                            <div class="card" style="width: 14rem;" data-toggle="tooltip" data-placement="bottom" title="Edition:{{$book->edition}}  Length:{{$book->length}}">
-                                <img src="{{asset('storage/thumbnails/'.$book->thumbnail)}}" height="150rem" class="card-img-top" alt="...">
+                            <div class="col-sm-3 pb-3 book">
+                                <div class="card h-100 border border-success" style="width: 14rem;" data-toggle="tooltip" data-placement="bottom" title="Edition:{{$book->edition}}  Length:{{$book->length}}">
+                                    <img src="{{asset('storage/thumbnails/'.$book->thumbnail)}}" height="150rem" class="card-img-top" alt="...">
                                     <div class="card-body">
                                     <h5 class="card-title">{{$book->name}}</h5>
                                     <p class="card-text">Author(s):{{$book->author}}</p>
@@ -62,14 +63,14 @@
                                             @endisset
                                             @if($flag != 1)
                                                 <div class="col col-md-12">
-                                                    <form action="{{route('userBooks.update',$book)}}" method="POST">
+                                                    <form action="{{route('userBooks.update',$book->id)}}" method="POST">
                                                         @csrf
                                                         @method('PUT')
                                                         <input type="submit" class= "btn btn-primary"value="Mark as read"></form>
                                                 </div>
                                             @else
                                                 <div class="col col-md-12">
-                                                    <form action="{{route('userBooks.destroy',$book)}}" method="POST">
+                                                    <form action="{{route('userBooks.destroy',$book->id)}}" method="POST">
                                                         @csrf
                                                         @method('delete')
                                                         <input type="submit" class= "btn btn-danger"value="Mark as Unread"></form>
@@ -82,7 +83,10 @@
                                 </div>
                             </div>
                         @endforeach   
-                    </div>       
+                    </div>
+                    <div class="pagination">
+                        <div> {{$books->links()}} </div>
+                    </div>        
                 </div>
             </div>
         </div>

@@ -35,8 +35,8 @@
                     <div class="row">                        
                         @foreach($books as $book)
                             <div class="col-sm-3 book pb-3">
-                            <div class="card h-100" data-toggle="tooltip" data-placement="bottom" title="Edition:{{$book->edition}}  Length:{{$book->length}}">
-                                <img src="{{asset('storage/thumbnails/'.$book->thumbnail)}}" class="img-fluid img-thumbnail" alt="..." style="height:10rem">
+                                <div class="card h-100 border border-success" data-toggle="tooltip" data-placement="bottom" title="Edition:{{$book->edition}}  Length:{{$book->length}}">
+                                    <img src="{{asset('storage/thumbnails/'.$book->thumbnail)}}" class="img-fluid img-thumbnail" alt="..." style="height:10rem">
                                     <div class="card-body" >
                                     <h5 class="card-title">{{$book->name}}</h5>
                                     <p class="card-text">Author(s):{{$book->author}}</p>

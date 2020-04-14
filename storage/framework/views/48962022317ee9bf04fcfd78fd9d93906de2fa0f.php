@@ -34,7 +34,7 @@
                     <div class="row">                        
                         <?php $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-sm-3 book pb-3">
-                            <div class="card h-100" data-toggle="tooltip" data-placement="bottom" title="Edition:<?php echo e($book->edition); ?>  Length:<?php echo e($book->length); ?>">
+                            <div class="card h-100 border border-success" data-toggle="tooltip" data-placement="bottom" title="Edition:<?php echo e($book->edition); ?>  Length:<?php echo e($book->length); ?>">
                                 <img src="<?php echo e(asset('storage/thumbnails/'.$book->thumbnail)); ?>" class="img-fluid img-thumbnail" alt="..." style="height:10rem">
                                     <div class="card-body" >
                                     <h5 class="card-title"><?php echo e($book->name); ?></h5>

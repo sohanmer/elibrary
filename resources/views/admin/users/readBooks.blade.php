@@ -31,7 +31,7 @@
                             @endforeach
                             @if($flag==0)
                                 <div class="col-sm-3 book">
-                                    <div class="card" style="width: 14rem;" data-toggle="tooltip" data-placement="bottom" title="Edition:{{$book->edition}}  Length:{{$book->length}}">
+                                    <div class="card h-100 border border-success" style="width: 14rem;" data-toggle="tooltip" data-placement="bottom" title="Edition:{{$book->edition}}  Length:{{$book->length}}">
                                         <img src="{{asset('storage/thumbnails/'.$book->thumbnail)}}" height="150rem" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title">{{$book->name}}</h5>

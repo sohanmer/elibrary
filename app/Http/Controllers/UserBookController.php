@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Books;
 use Auth;
 use App\Genre;
+use DB;
 
 class UserBookController extends Controller
 {
@@ -17,10 +18,14 @@ class UserBookController extends Controller
      */
     public function index()
     {
+        $books = DB::table('books')->paginate(12);
+        //$books = Books::all();
         return view('admin.users.userBook')
-                ->with('books',Books::all())
+                ->with('books',$books)
                 ->with('readBooks',Auth::user()->books->pluck('id'))
                 ->with('genres',Genre::all());
+                
+
     }
 
     /**

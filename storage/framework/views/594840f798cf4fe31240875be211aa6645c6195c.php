@@ -1,6 +1,7 @@
 
 
 <?php $__env->startSection('content'); ?>
+
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -35,9 +36,9 @@
                     <?php endif; ?>
                     <div class="row">                        
                         <?php $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="col-sm-3 book">
-                            <div class="card" style="width: 14rem;" data-toggle="tooltip" data-placement="bottom" title="Edition:<?php echo e($book->edition); ?>  Length:<?php echo e($book->length); ?>">
-                                <img src="<?php echo e(asset('storage/thumbnails/'.$book->thumbnail)); ?>" height="150rem" class="card-img-top" alt="...">
+                            <div class="col-sm-3 pb-3 book">
+                                <div class="card h-100 border border-success" style="width: 14rem;" data-toggle="tooltip" data-placement="bottom" title="Edition:<?php echo e($book->edition); ?>  Length:<?php echo e($book->length); ?>">
+                                    <img src="<?php echo e(asset('storage/thumbnails/'.$book->thumbnail)); ?>" height="150rem" class="card-img-top" alt="...">
                                     <div class="card-body">
                                     <h5 class="card-title"><?php echo e($book->name); ?></h5>
                                     <p class="card-text">Author(s):<?php echo e($book->author); ?></p>
@@ -63,14 +64,14 @@
                                             <?php endif; ?>
                                             <?php if($flag != 1): ?>
                                                 <div class="col col-md-12">
-                                                    <form action="<?php echo e(route('userBooks.update',$book)); ?>" method="POST">
+                                                    <form action="<?php echo e(route('userBooks.update',$book->id)); ?>" method="POST">
                                                         <?php echo csrf_field(); ?>
                                                         <?php echo method_field('PUT'); ?>
                                                         <input type="submit" class= "btn btn-primary"value="Mark as read"></form>
                                                 </div>
                                             <?php else: ?>
                                                 <div class="col col-md-12">
-                                                    <form action="<?php echo e(route('userBooks.destroy',$book)); ?>" method="POST">
+                                                    <form action="<?php echo e(route('userBooks.destroy',$book->id)); ?>" method="POST">
                                                         <?php echo csrf_field(); ?>
                                                         <?php echo method_field('delete'); ?>
                                                         <input type="submit" class= "btn btn-danger"value="Mark as Unread"></form>
@@ -83,7 +84,10 @@
                                 </div>
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>   
-                    </div>       
+                    </div>
+                    <div class="pagination">
+                        <div> <?php echo e($books->links()); ?> </div>
+                    </div>        
                 </div>
             </div>
         </div>
