@@ -34,10 +34,10 @@
                     @endif
                     <div class="row">                        
                         @foreach($books as $book)
-                            <div class="col-sm-3 book">
-                            <div class="card" style="width: 14rem;" data-toggle="tooltip" data-placement="bottom" title="Edition:{{$book->edition}}  Length:{{$book->length}}">
-                                <img src="{{asset('storage/thumbnails/'.$book->thumbnail)}}" height="150rem" class="card-img-top" alt="...">
-                                    <div class="card-body">
+                            <div class="col-sm-3 book pb-3">
+                            <div class="card h-100" data-toggle="tooltip" data-placement="bottom" title="Edition:{{$book->edition}}  Length:{{$book->length}}">
+                                <img src="{{asset('storage/thumbnails/'.$book->thumbnail)}}" class="img-fluid img-thumbnail" alt="..." style="height:10rem">
+                                    <div class="card-body" >
                                     <h5 class="card-title">{{$book->name}}</h5>
                                     <p class="card-text">Author(s):{{$book->author}}</p>
                                     @can('manage-books')
@@ -59,11 +59,14 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach   
-                    </div>       
+                        @endforeach                           
+                    </div>
+                    <div class="pagination">
+                        <div> {{$books->links()}} </div>
+                    </div>                
                 </div>
             </div>
-        </div>
+        </div>    
     </div>
 </div>
 @endsection

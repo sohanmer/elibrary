@@ -33,10 +33,10 @@
                     <?php endif; ?>
                     <div class="row">                        
                         <?php $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="col-sm-3 book">
-                            <div class="card" style="width: 14rem;" data-toggle="tooltip" data-placement="bottom" title="Edition:<?php echo e($book->edition); ?>  Length:<?php echo e($book->length); ?>">
-                                <img src="<?php echo e(asset('storage/thumbnails/'.$book->thumbnail)); ?>" height="150rem" class="card-img-top" alt="...">
-                                    <div class="card-body">
+                            <div class="col-sm-3 book pb-3">
+                            <div class="card h-100" data-toggle="tooltip" data-placement="bottom" title="Edition:<?php echo e($book->edition); ?>  Length:<?php echo e($book->length); ?>">
+                                <img src="<?php echo e(asset('storage/thumbnails/'.$book->thumbnail)); ?>" class="img-fluid img-thumbnail" alt="..." style="height:10rem">
+                                    <div class="card-body" >
                                     <h5 class="card-title"><?php echo e($book->name); ?></h5>
                                     <p class="card-text">Author(s):<?php echo e($book->author); ?></p>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage-books')): ?>
@@ -58,11 +58,14 @@
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>   
-                    </div>       
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                           
+                    </div>
+                    <div class="pagination">
+                        <div> <?php echo e($books->links()); ?> </div>
+                    </div>                
                 </div>
             </div>
-        </div>
+        </div>    
     </div>
 </div>
 <?php $__env->stopSection(); ?>
