@@ -37,7 +37,7 @@
                 <form class="login100-form validate-form" method="POST" action="<?php echo e(route('login')); ?>">
                     <?php echo csrf_field(); ?>
 					<span class="login100-form-title p-b-43">
-                        Welcome to e-Library!<br>
+                        Welcome to eLibrary!<br><br>
                         Please Log In to continue
 					</span>
 					
@@ -66,8 +66,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>						
-					</div>
-					
+					</div><br/>					
 					
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
                         <input type="password" class="input100  <?php $__errorArgs = ['password'];
@@ -93,7 +92,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-					</div>
+					</div><br/>
 
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
 						<div class="contact100-form-checkbox">
@@ -146,7 +145,7 @@ unset($__errorArgs, $__bag); ?>
 	
 	
 <!--===============================================================================================-->
-	<script src="<?php echo e(asset('vendor/jquery/jquery-3.2.1.min.js')); ?>"></script>
+	
 <!--===============================================================================================-->
 	<script src="<?php echo e(asset('vendor/animsition/js/animsition.min.js')); ?>"></script>
 <!--===============================================================================================-->
@@ -160,10 +159,9 @@ unset($__errorArgs, $__bag); ?>
 <!--===============================================================================================-->
 	<script src="<?php echo e(asset('vendor/countdowntime/countdowntime.js')); ?>"></script>
 <!--===============================================================================================-->
-	<script src="<?php echo e(asset('js/main.js')); ?>"></script>
+	
 
-</body>
-</html>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\eLibrary\resources\views/auth/login.blade.php ENDPATH**/ ?>

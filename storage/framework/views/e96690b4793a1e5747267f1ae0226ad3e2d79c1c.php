@@ -116,7 +116,7 @@
                 </div>            
                 <div class="header__pane ml-auto">
                     <div>
-                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar" onclick="hideLogo()">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
                             </span>
@@ -228,13 +228,12 @@
         </main>
         <script>
         function hideLogo() {
-            console.log('hello');
-            document.getElementById("#header-logo").style.display='block';
-            // if (x.style.display === "none") {
-            //         x.style.display = "block";
-            //     } else {
-            //         x.style.display = "none";
-            //     }
+            var x = document.getElementById("header-logo");
+            if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
             }
         </script>
         <script type="text/javascript" src="<?php echo e(asset('dashboard/assets/scripts/main.js')); ?>"></script>

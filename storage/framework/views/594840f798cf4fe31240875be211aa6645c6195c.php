@@ -23,8 +23,8 @@
                     </div>
                     <div class=" form-group col-md-3">
                         <form action="/filter" method="GET" >
-                            <div class="row">
-                                <div class="col-md-8">
+                            <div class="row container">
+                                <div class="col-md-6">
                                     <select class="form-control" name="filter">
                                         <option value="all"> All</option>
                                         <?php $__currentLoopData = $genres; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -32,7 +32,9 @@
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
-                                <button type="submit" value="Filter" class="btn btn-primary">Search</button>
+                                <div  class=" m-auto pt-2">
+                                    <button type="submit" value="Filter" class="btn btn-primary">Search</button>
+                                </div>
                             </div>                            
                         </form>
                     </div>
@@ -122,6 +124,9 @@
         </div>
     </div>
 </div>
+
+
 <?php $__env->stopSection(); ?>
 
+<?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\eLibrary\resources\views/admin/users/userBook.blade.php ENDPATH**/ ?>

@@ -23,8 +23,8 @@
                     </div>
                     <div class=" form-group col-md-3">
                         <form action="/filter" method="GET" >
-                            <div class="row">
-                                <div class="col-md-8">
+                            <div class="row container">
+                                <div class="col-md-6">
                                     <select class="form-control" name="filter">
                                         <option value="all"> All</option>
                                         @foreach($genres as $genre)
@@ -32,7 +32,9 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <button type="submit" value="Filter" class="btn btn-primary">Search</button>
+                                <div  class=" m-auto pt-2">
+                                    <button type="submit" value="Filter" class="btn btn-primary">Search</button>
+                                </div>
                             </div>                            
                         </form>
                     </div>
@@ -186,4 +188,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

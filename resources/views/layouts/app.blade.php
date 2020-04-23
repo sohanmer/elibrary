@@ -11,16 +11,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    {{-- <script type="text/javascript">
-        $('#delete-modal').on('shown.bs.modal', function (event) {
-          var button = $(event.relatedTarget)
-          var book_id = button.data('bookid')
-          var modal = $(this)
-      
-          modal.find('.modal-body #book_id').val(book_id);
-        })
-      </script> --}}
-
+    <script src="{{asset('forms/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('forms/js/main.js')}}"></script>
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -140,5 +133,6 @@
             @yield('content')
         </main>
     </div>
+
 </body>
 </html>

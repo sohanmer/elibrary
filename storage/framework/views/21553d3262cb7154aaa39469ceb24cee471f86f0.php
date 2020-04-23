@@ -11,8 +11,9 @@
 
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
+    <script src="<?php echo e(asset('forms/vendor/jquery/jquery-3.2.1.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('forms/js/main.js')); ?>"></script>
     
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -132,6 +133,7 @@
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
+
 </body>
 </html>
 <?php /**PATH C:\wamp64\www\eLibrary\resources\views/layouts/app.blade.php ENDPATH**/ ?>

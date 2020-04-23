@@ -109,7 +109,7 @@
                 <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                     @csrf
 					<span class="login100-form-title p-b-43">
-                        Welcome to e-Library!<br>
+                        Welcome to eLibrary!<br><br>
                         Please Log In to continue
 					</span>
 					
@@ -186,7 +186,7 @@
 	
 	
 <!--===============================================================================================-->
-	<script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+	
 <!--===============================================================================================-->
 	<script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
 <!--===============================================================================================-->
@@ -200,8 +200,7 @@
 <!--===============================================================================================-->
 	<script src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script>
 <!--===============================================================================================-->
-	<script src="{{asset('js/main.js')}}"></script>
+	
 
-</body>
-</html>
+
 @endsection
