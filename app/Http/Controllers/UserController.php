@@ -86,6 +86,7 @@ class UserController extends Controller
         $user->books()->detach();
         $user->delete();
         $users = User::all();
-        return view('admin.users.userList')->with('users',$users);
+        return view('admin.users.userList')->with('users',$users)
+                                            ->with('message',"User Deleted Successfully!");
     }
 }

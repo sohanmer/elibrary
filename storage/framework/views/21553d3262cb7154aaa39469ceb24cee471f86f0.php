@@ -11,23 +11,35 @@
 
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9c4f9ad04a.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/card.css')); ?>" rel="stylesheet">
+    <style>
+        a:hover{
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
+    <div id="app" class="sticky-top">
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+            <div class="container-fluid">
+                <a class="h3 text-primary font-weight-bolder" href="<?php echo e(url('/')); ?>">
+                    <i class="fas fa-book text-primary"></i>
                     <?php echo e(config('app.name', 'e-Library')); ?>
 
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                data-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="<?php echo e(__('Toggle navigation')); ?>">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -38,7 +50,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto h4">
                         <!-- Authentication Links -->
                         <?php if(auth()->guard()->guest()): ?>
                             <li class="nav-item">
@@ -50,44 +62,62 @@
                                 </li>
                             <?php endif; ?>
                         <?php else: ?>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
-                                </a>
+                            <li>
+                                
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        <?php echo e(__('Logout')); ?>
-
-                                    </a>
-                                        
+                                <div>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage-books')): ?>
-                                        <a class="dropdown-item" href="/home"> 
-                                            View Books
-                                        </a>
-                                        <a class="dropdown-item" href="<?php echo e(route('books.create')); ?>"> 
-                                            Add Book
-                                        </a>
+                                        <li class = "nav-item font-weight-bold
+                                         <?php echo e(Request::path()=== "books"?"active":""); ?>">
+                                            <a class = "nav-link" href="/home"> 
+                                                View Books
+                                            </a>
+                                        </li>
+                                        <li class = "nav-item font-weight-bold
+                                         <?php echo e(Request::path()=== "books/create"?"active":""); ?>">
+                                            <a class = "nav-link" href="<?php echo e(route('books.create')); ?>"> 
+                                                Add Book
+                                            </a>
+                                        </li>
                                     <?php endif; ?>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage-users')): ?>
-                                        <a class="dropdown-item" href="<?php echo e(route('users.index')); ?>"> 
-                                            Manage Users
-                                        </a>
+                                        <li class = "nav-item font-weight-bold
+                                         <?php echo e(Request::path()=== "users"?"active":""); ?>">
+                                            <a class="nav-link" href="<?php echo e(route('users.index')); ?>"> 
+                                                Manage Users
+                                            </a>
+                                        </li>
                                     <?php endif; ?>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read-books')): ?>
-                                        <a class="dropdown-item" href="<?php echo e(route('userBooks.index')); ?>"> 
-                                            All Books
-                                        </a>
-                                        <a class="dropdown-item" href="<?php echo e(route('userBooks.show',1)); ?>"> 
-                                            Already Read
-                                        </a>
-                                        <a class="dropdown-item" href="<?php echo e(route('userBooks.show',2)); ?>"> 
-                                            Unread
-                                        </a>
+                                        <li class = "nav-item font-weight-bold 
+                                        <?php echo e(Request::path()=== "userBooks"?"active":""); ?>">    
+                                            <a class="nav-link" href="<?php echo e(route('userBooks.index')); ?>"> 
+                                                All Books
+                                            </a>
+                                        </li>
+                                        <li class = "nav-item font-weight-bold <?php echo e(Request::path()=== "userBooks/1"?"active":""); ?>">
+                                            <a class="nav-link" href="<?php echo e(route('userBooks.show',1)); ?>"> 
+                                                Already Read
+                                            </a>
+                                        </li>
+                                        <li class = "nav-item font-weight-bold
+                                         <?php echo e(Request::path()=== "userBooks/2"?"active":""); ?>">
+                                            <a class="nav-link" href="<?php echo e(route('userBooks.show',2)); ?>"> 
+                                                Unread
+                                            </a>
+                                        </li>
                                     <?php endif; ?>
-                                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                        <li class = "nav-item font-weight-bold">
+                                            <a class="nav-link text-danger" href="<?php echo e(route('logout')); ?>"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                                <?php echo e(__('Logout')); ?>
+
+                                            </a>
+                                        </li>                                      
+                                    
+                                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
+                                     style="display: none;">
                                         <?php echo csrf_field(); ?>
                                     </form>
                                 </div>
@@ -98,7 +128,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>

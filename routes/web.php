@@ -15,15 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 
 Auth::routes(['verify' => true]);
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/filter','BooksController@filter');
-Route::resource('books', 'BooksController')->middleware('can:manage-books');
+Route::get('/filter','BookController@filter');
+Route::resource('admin', 'AdminController')->middleware('can:manage-books');
+Route::resource('books', 'BookController')->middleware('can:manage-books');
 Route::resource('users', 'UserController')->middleware('can:manage-users');
 Route::resource('userBooks', 'UserBookController')->middleware('can:read-books');
 
@@ -34,4 +35,4 @@ Route::get('verifyEmailFirst','Auth\RegisterController@verifyEmailFirst')->name(
 Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

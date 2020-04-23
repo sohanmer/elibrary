@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Jobs\ReminderMails;
 use Auth;
 use Illuminate\Http\Request;
-use App\User;
-use Carbon\Carbon;
-use App\Books;
+
 
 class HomeController extends Controller
 {
@@ -30,7 +28,8 @@ class HomeController extends Controller
     {         
         //ReminderMails::dispatch();
         if(Auth::user()->hasRole('admin')){
-            return redirect(route('books.index'));
+            
+            return redirect()->route('admin.index');
         }
         else{
             return redirect(route('userBooks.index'));

@@ -18,13 +18,17 @@ class UserBookController extends Controller
      */
     public function index()
     {
-        $books = DB::table('books')->paginate(12);
+        // $books = DB::table('books')->paginate(12);
         //$books = Books::all();
+        $bookGenres = DB::table('books')
+                    ->leftJoin('books_genre','books.id','=','books_genre.books_id')
+                    ->leftJoin('genres','genre_id','genres.id')->get();
+                    
         return view('admin.users.userBook')
-                ->with('books',$books)
+                ->with('books',Books::all())
                 ->with('readBooks',Auth::user()->books->pluck('id'))
-                ->with('genres',Genre::all());
-                
+                ->with('genres',Genre::all())
+                ->with('bookGenres',$bookGenres);                                
 
     }
 
@@ -57,11 +61,16 @@ class UserBookController extends Controller
      */
     public function show($id)
     {
+        $bookGenres = DB::table('books')
+                    ->leftJoin('books_genre','books.id','=','books_genre.books_id')
+                    ->leftJoin('genres','genre_id','genres.id')->get();
         if($id==1){
             return view('admin.users.readBooks')
                     ->with('books',Books::all())
                     ->with('readBooks',Auth::user()->books->pluck('id'))
-                    ->with('message','Books You Already Read');
+                    ->with('message','Books You Already Read')
+                    ->with('status', 'read')
+                    ->with('bookGenres',$bookGenres);
         }
         else{
             $books = Books::all();
@@ -77,7 +86,9 @@ class UserBookController extends Controller
             return view('admin.users.readBooks')
                     ->with('books',Books::all())
                     ->with('readBooks',$unread->pluck('id'))
-                    ->with('message','Books You Have Not Read');
+                    ->with('message','Books You Have Not Read')
+                    ->with('status','unread')
+                    ->with('bookGenres',$bookGenres);
         }
     }
 

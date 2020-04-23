@@ -11,22 +11,42 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script type="text/javascript">
+        $('#delete-modal').on('shown.bs.modal', function (event) {
+          var button = $(event.relatedTarget)
+          var book_id = button.data('bookid')
+          var modal = $(this)
+      
+          modal.find('.modal-body #book_id').val(book_id);
+        })
+      </script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9c4f9ad04a.js" crossorigin="anonymous"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/card.css') }}" rel="stylesheet">
+    <style>
+        a:hover{
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+    <div id="app" class="sticky-top">
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+            <div class="container-fluid">
+                <a class="h3 text-primary font-weight-bolder" href="{{ url('/') }}">
+                    <i class="fas fa-book text-primary"></i>
                     {{ config('app.name', 'e-Library') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                data-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -37,7 +57,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto h4">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -49,43 +69,63 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li>
+                                {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                                </a> --}}
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                        
+                                <div>
                                     @can('manage-books')
-                                        <a class="dropdown-item" href="/home"> 
-                                            View Books
-                                        </a>
-                                        <a class="dropdown-item" href="{{route('books.create')}}"> 
-                                            Add Book
-                                        </a>
+                                        <li class = "nav-item font-weight-bold
+                                         {{Request::path()=== "books"?"active":""}}">
+                                            <a class = "nav-link" href="/home"> 
+                                                View Books
+                                            </a>
+                                        </li>
+                                        <li class = "nav-item font-weight-bold
+                                         {{Request::path()=== "books/create"?"active":""}}">
+                                            <a class = "nav-link" href="{{route('books.create')}}"> 
+                                                Add Book
+                                            </a>
+                                        </li>
                                     @endcan
                                     @can('manage-users')
-                                        <a class="dropdown-item" href="{{route('users.index')}}"> 
-                                            Manage Users
-                                        </a>
+                                        <li class = "nav-item font-weight-bold
+                                         {{Request::path()=== "users"?"active":""}}">
+                                            <a class="nav-link" href="{{route('users.index')}}"> 
+                                                Manage Users
+                                            </a>
+                                        </li>
                                     @endcan
                                     @can('read-books')
-                                        <a class="dropdown-item" href="{{route('userBooks.index')}}"> 
-                                            All Books
-                                        </a>
-                                        <a class="dropdown-item" href="{{route('userBooks.show',1)}}"> 
-                                            Already Read
-                                        </a>
-                                        <a class="dropdown-item" href="{{route('userBooks.show',2)}}"> 
-                                            Unread
-                                        </a>
+                                        <li class = "nav-item font-weight-bold 
+                                        {{Request::path()=== "userBooks"?"active":""}}">    
+                                            <a class="nav-link" href="{{route('userBooks.index')}}"> 
+                                                All Books
+                                            </a>
+                                        </li>
+                                        <li class = "nav-item font-weight-bold {{Request::path()=== "userBooks/1"?"active":""}}">
+                                            <a class="nav-link" href="{{route('userBooks.show',1)}}"> 
+                                                Already Read
+                                            </a>
+                                        </li>
+                                        <li class = "nav-item font-weight-bold
+                                         {{Request::path()=== "userBooks/2"?"active":""}}">
+                                            <a class="nav-link" href="{{route('userBooks.show',2)}}"> 
+                                                Unread
+                                            </a>
+                                        </li>
                                     @endcan
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <li class = "nav-item font-weight-bold">
+                                            <a class="nav-link text-danger" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+                                        </li>                                      
+                                    
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                     style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
@@ -96,7 +136,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
