@@ -32,8 +32,8 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div  class=" m-auto pt-2">
-                                    <button type="submit" value="Filter" class="btn btn-primary">Search</button>
+                                <div  class="m-auto">
+                                    <button type="submit" value="Filter" class="btn btn-primary">Filter</button>
                                 </div>
                             </div>                            
                         </form>
@@ -44,80 +44,13 @@
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
-                    @endif
-                    {{-- <div class="row">                        
-                        @foreach($books as $book)
-                        <div class="col-sm-1 col-md-2 book pb-3">
-                            <div class="card h-100 border border-success">
-                                <img src="{{asset('storage/thumbnails/'.$book->thumbnail)}}"
-                                 class="img-fluid img-thumbnail" 
-                                alt="{{$book->name}}" style="height:10rem">
-                                <div class="card-body" >
-                                        <h5 class="card-title">
-                                            <b>{{ \Illuminate\Support\Str::limit($book->name, 15, $end='...') }}</b>
-                                        </h5>
-                                        <p class="card-text">
-                                            <b>{{ \Illuminate\Support\Str::limit($book->author, 20, $end='...') }}</b>
-                                        </p>
-                                    @can('read-books')
-                                    <div class="container-fluid">                                                                                                  
-                                       <div class="row"> 
-                                           @php
-                                                $flag = 0;
-                                            @endphp
-                                            @isset($readBooks)
-                                                @foreach($readBooks as $readBook)
-                                                    @if($book->id == $readBook)
-                                                        @php 
-                                                            $flag = 1;
-                                                        @endphp
-                                                        @break
-                                                    @else
-                                                        @php
-                                                            $flag = 0;   
-                                                        @endphp
-                                                    @endif
-                                                @endforeach
-                                            @endisset
-                                            @if($flag != 1)
-                                                <div class="col align-items-center">
-                                                    <form action="{{route('userBooks.update',$book->id)}}" 
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <input type="submit" 
-                                                        class= "btn btn-primary align-self-center" 
-                                                        value="Mark as Read">
-                                                    </form>
-                                                </div>
-                                            @else
-                                                <div class="col align-items-center">
-                                                    <form action="{{route('userBooks.destroy',$book->id)}}"
-                                                         method="POST">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <input type="submit" class= "btn btn-danger" 
-                                                        value="Mark as Unread">
-                                                    </form>
-                                                </div>
-                                            @endif                                           
-                                       </div>
-                                    </div>
-                                    @endcan
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach   
-                    </div> --}}
-                    {{-- <div class="pagination">
-                        <div> {{$books->links()}} </div>
-                    </div>         --}}
+                    @endif                    
                     <div class="container mt-2">
                         <div class="row">
                             @foreach($books as $book)
                                 <div class="col-md-3 col-sm-6 pb-4">
                                     <div class="card card-block h-100"  style="position:relative">
-                                        <img src="{{asset('images/thumbnails/'.$book->thumbnail)}}" alt="{{$book->name}}" style="padding: 10px 15px 0px 15px">
+                                        <img src="{{asset('images/thumbnails/'.$book->thumbnail)}}" alt="{{$book->name}}" style="padding: 10px 30px 0px 30px">
                                         <div class="card-body text-primary">
                                             <h5 class="card-title ">
                                                 <b class="">{{ \Illuminate\Support\Str::limit($book->name, 20, $end='...') }}</b>

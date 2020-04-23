@@ -112,17 +112,20 @@ class UserBookController extends Controller
      */
     public function update($id)
     {
-            $book = Books::find($id);
-            $user_id = Auth::user()->id;
-            $book->user()->attach($user_id);
-        
-            $user = Auth::user();
-
-        
+        $book = Books::find($id);
+        $user_id = Auth::user()->id;
+        $book->user()->attach($user_id);
+    
+        $user = Auth::user();
+        $bookGenres = DB::table('books')
+        ->leftJoin('books_genre','books.id','=','books_genre.books_id')
+        ->leftJoin('genres','genre_id','genres.id')->get();
+    
         return view('admin.users.userBook')
                 ->with('readBooks',$user->books->pluck('id'))
                 ->with('books',Books::all())
-                ->with('genres',Genre::all());
+                ->with('genres',Genre::all())
+                ->with('bookGenres',$bookGenres);
     }
 
     /**
