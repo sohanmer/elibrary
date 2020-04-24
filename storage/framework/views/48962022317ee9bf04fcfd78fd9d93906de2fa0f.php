@@ -170,7 +170,7 @@
 <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 </div>
 </div>
-<script type="text/javascript" src="<?php echo e(asset('admin/assets/scripts/main.js')); ?>"></script>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\wamp64\www\eLibrary\resources\views/home.blade.php ENDPATH**/ ?>

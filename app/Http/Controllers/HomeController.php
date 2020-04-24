@@ -27,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {         
         //ReminderMails::dispatch();
+        
         if(Auth::user()->hasRole('admin')){
             
             return redirect()->route('admin.index');
