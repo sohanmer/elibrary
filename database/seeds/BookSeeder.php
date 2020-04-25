@@ -36,7 +36,7 @@ class BookSeeder extends Seeder
             'author' => 'Jane Austin',
             'edition' => 'First',
             'length' => '400',
-            'thumbnail' => 'Pride And Prejudice.jpg'
+            'thumbnail' => 'Pride and Prejudice.jpg'
         ]);
 
         Books::create([
@@ -54,7 +54,7 @@ class BookSeeder extends Seeder
             'author' => 'Leo Tolstoy',
             'edition' => 'Second',
             'length' => '1220',
-            'thumbnail' => 'War And Peace.jpg'
+            'thumbnail' => 'War and Peace.jpg'
         ]);
 
         Books::create([

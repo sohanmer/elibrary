@@ -28,7 +28,7 @@ Route::resource('books', 'BookController')->middleware('can:manage-books');
 Route::resource('users', 'UserController')->middleware('can:manage-users');
 Route::resource('userBooks', 'UserBookController')->middleware('can:read-books');
 
-Route::get('login/google', 'Auth\LoginController@redirectToProvider');
+Route::get('/login', 'Auth\LoginController@redirectToProvider');
 Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('verifyEmailFirst','Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
