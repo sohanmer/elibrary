@@ -96,7 +96,7 @@ unset($__errorArgs, $__bag); ?>
 					</div>
 
 					<div class="login100-form-social flex-c-m">
-						<a href="<?php echo e(route('/login/google')); ?>" class="login100-form-social-item flex-c-m bg2 m-r-5">
+						<a href="<?php echo e(url('login/google')); ?>" class="login100-form-social-item flex-c-m bg2 m-r-5">
 							<i class="fa fa-google" aria-hidden="true"></i>
 						</a>
 					</div>
