@@ -22,7 +22,7 @@ Auth::routes(['verify' => true]);
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/filter','BookController@filter');
+Route::get('/filter','BookController@filter')->name('filter');
 Route::resource('admin', 'AdminController')->middleware('can:manage-books');
 Route::resource('books', 'BookController')->middleware('can:manage-books');
 Route::resource('users', 'UserController')->middleware('can:manage-users');

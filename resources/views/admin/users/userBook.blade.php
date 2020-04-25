@@ -22,7 +22,7 @@
                         @endif                        
                     </div>
                     <div class=" form-group col-md-3">
-                        <form action="/filter" method="GET" >
+                        <form action="{{route("filter")}}" method="GET" >
                             <div class="row container">
                                 <div class="col-md-6">
                                     <select class="form-control" name="filter">
@@ -50,7 +50,7 @@
                             @foreach($books as $book)
                                 <div class="col-md-3 col-sm-6 pb-4">
                                     <div class="card card-block h-100"  style="position:relative">
-                                        <img src="{{asset('images/thumbnails/'.$book->thumbnail)}}" alt="{{$book->name}}" style="padding: 10px 30px 0px 30px">
+                                        <img src="{{asset('images/thumbnails/'.$book->thumbnail)}}" alt="{{$book->thumbnail}}" style="padding: 10px 30px 0px 30px">
                                         <div class="card-body text-primary">
                                             <h5 class="card-title ">
                                                 <b class="">{{ \Illuminate\Support\Str::limit($book->name, 20, $end='...') }}</b>

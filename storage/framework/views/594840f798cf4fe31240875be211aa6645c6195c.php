@@ -22,9 +22,9 @@
                         <?php endif; ?>                        
                     </div>
                     <div class=" form-group col-md-3">
-                        <form action="/filter" method="GET" >
+                        <form action="<?php echo e(route("filter")); ?>" method="GET" >
                             <div class="row container">
-                                <div class="col-md-6 pb-2">
+                                <div class="col-md-6">
                                     <select class="form-control" name="filter">
                                         <option value="all"> All</option>
                                         <?php $__currentLoopData = $genres; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -32,7 +32,7 @@
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
-                                <div  class=" m-auto">
+                                <div  class="m-auto">
                                     <button type="submit" value="Filter" class="btn btn-primary">Filter</button>
                                 </div>
                             </div>                            
@@ -51,7 +51,7 @@
                             <?php $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-md-3 col-sm-6 pb-4">
                                     <div class="card card-block h-100"  style="position:relative">
-                                        <img src="<?php echo e(asset('images/thumbnails/'.$book->thumbnail)); ?>" alt="<?php echo e($book->name); ?>" style="padding: 10px 30px 0px 30px">
+                                        <img src="<?php echo e(asset('images/thumbnails/'.$book->thumbnail)); ?>" alt="<?php echo e($book->thumbnail); ?>" style="padding: 10px 30px 0px 30px">
                                         <div class="card-body text-primary">
                                             <h5 class="card-title ">
                                                 <b class=""><?php echo e(\Illuminate\Support\Str::limit($book->name, 20, $end='...')); ?></b>
