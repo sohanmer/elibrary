@@ -20,13 +20,13 @@ class CreateGenresTable extends Migration
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
-        Schema::create('book_genre', function (Blueprint $table) {
+        Schema::create('books_genre', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('book_id');
+            $table->unsignedBigInteger('books_id');
             $table->unsignedBigInteger('genre_id');
             $table->timestamps();
-            $table->unique(['book_id','genre_id']);
-            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->unique(['books_id','genre_id']);
+            $table->foreign('books_id')->references('id')->on('books')->onDelete('cascade');
             $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
         });
     }
