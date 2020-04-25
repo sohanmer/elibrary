@@ -40,8 +40,8 @@
                         Register Yourself
 					</span>
 					
-					
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<label class="font-weight-bolder pl-2 text-secondary">Name:</label>                    
+					<div class="wrap-input100 validate-input" style="height:4em" data-validate = "Name is Required">
                         <input class="input100  <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -51,8 +51,6 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" name="name" 
                         value="<?php echo e(old('name')); ?>" required autocomplete="name" autofocus>
-                        <span class="focus-input100"></span>
-						<span class="label-input100">Name</span>
                             <?php $__errorArgs = ['Name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -66,7 +64,9 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>						
                     </div><br/>
-                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+
+                    <label class="font-weight-bolder pl-2 text-secondary">Email:</label>                    
+                    <div class="wrap-input100 validate-input" style="height:4em" data-validate = "Valid email is required: ex@abc.xyz">
                         <input class="input100 <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -76,8 +76,6 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" type="text" name="email" 
                         value="<?php echo e(old('email')); ?>" required autocomplete="email" autofocus>
-                        <span class="focus-input100"></span>
-						<span class="label-input100">Email</span>
                             <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -90,8 +88,10 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>						
-					</div><br/>					
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
+                    </div><br/>	
+                    
+                    <label class="font-weight-bolder pl-2 text-secondary">Password:</label>                    
+					<div class="wrap-input100 validate-input" style="height:4em" data-validate="Password is required">
                         <input type="password" class="input100  <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -101,8 +101,6 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" 
                         name="password" required autocomplete="current-password">
-                        <span class="focus-input100"></span>
-                        <span class="label-input100">Password</span>
                         <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -116,12 +114,12 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                     </div><br/>
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+
+                    <label class="font-weight-bolder pl-2 text-secondary">Confirm-Password:</label>                    
+                    <div class="wrap-input100 validate-input" style="height:4em" data-validate="Password is required">
                         <input type="password" id="password-confirm" type="password" 
-                        class="input100 "name="password_confirmation" required autocomplete="new-password">
-                        <span class="focus-input100"></span>
-                        <span class="label-input100">Password</span>
-                    </div>		<br/>		              
+                        class="input100 "name="password_confirmation" required autocomplete="new-password">                        
+                    </div><br/>		              
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">

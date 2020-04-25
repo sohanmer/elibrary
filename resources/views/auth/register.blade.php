@@ -114,46 +114,44 @@
                         Register Yourself
 					</span>
 					
-					
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<label class="font-weight-bolder pl-2 text-secondary">Name:</label>                    
+					<div class="wrap-input100 validate-input" style="height:4em" data-validate = "Name is Required">
                         <input class="input100  @error('name') is-invalid @enderror" name="name" 
                         value="{{ old('name') }}" required autocomplete="name" autofocus>
-                        <span class="focus-input100"></span>
-						<span class="label-input100">Name</span>
                             @error('Name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span><br/>
                             @enderror						
                     </div><br/>
-                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+
+                    <label class="font-weight-bolder pl-2 text-secondary">Email:</label>                    
+                    <div class="wrap-input100 validate-input" style="height:4em" data-validate = "Valid email is required: ex@abc.xyz">
                         <input class="input100 @error('email') is-invalid @enderror" type="text" name="email" 
                         value="{{ old('email') }}" required autocomplete="email" autofocus>
-                        <span class="focus-input100"></span>
-						<span class="label-input100">Email</span>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span><br/>
                             @enderror						
-					</div><br/>					
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
+                    </div><br/>	
+                    
+                    <label class="font-weight-bolder pl-2 text-secondary">Password:</label>                    
+					<div class="wrap-input100 validate-input" style="height:4em" data-validate="Password is required">
                         <input type="password" class="input100  @error('password') is-invalid @enderror" 
                         name="password" required autocomplete="current-password">
-                        <span class="focus-input100"></span>
-                        <span class="label-input100">Password</span>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span><br/>
                         @enderror
                     </div><br/>
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+
+                    <label class="font-weight-bolder pl-2 text-secondary">Confirm-Password:</label>                    
+                    <div class="wrap-input100 validate-input" style="height:4em" data-validate="Password is required">
                         <input type="password" id="password-confirm" type="password" 
-                        class="input100 "name="password_confirmation" required autocomplete="new-password">
-                        <span class="focus-input100"></span>
-                        <span class="label-input100">Password</span>
-                    </div>		<br/>		              
+                        class="input100 "name="password_confirmation" required autocomplete="new-password">                        
+                    </div><br/>		              
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
