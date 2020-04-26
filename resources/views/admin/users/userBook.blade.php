@@ -91,7 +91,7 @@
                                                                     @method('PUT')
                                                                     <input type="submit" 
                                                                     class= "btn btn-success align-self-center" 
-                                                                    value="Already Read" >
+                                                                    value="Mark As Read" >
                                                                 </form>
                                                             </div>
                                                         </div>

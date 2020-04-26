@@ -87,7 +87,7 @@
                                                                         @csrf
                                                                         @method('delete')
                                                                         <input type="submit" class= "btn btn-primary" 
-                                                                        value="Already Read">
+                                                                        value="Mark As Read">
                                                                     </form>
                                                                 </div>
                                                             </div>
