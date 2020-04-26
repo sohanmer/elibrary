@@ -58,7 +58,7 @@
                                   </td>
                                   <td class="text-center">
                                     <div class="col">                                            
-                                      <button class="btn btn-danger delete-user" style="width:50px" data-toggle="modal" 
+                                      <button class="btn btn-danger delete-user" style="width:70px" data-toggle="modal" 
                                               data-item="{{route('users.destroy',$user->id)}}" 
                                               data-target="#delete-user">Delete
                                       </button>

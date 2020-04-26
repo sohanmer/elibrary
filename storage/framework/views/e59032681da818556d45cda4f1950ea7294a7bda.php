@@ -13,7 +13,7 @@
 					</span>
 					
                     <label class="font-weight-bolder pl-2 text-secondary">Email:</label>
-                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <div class="wrap-input100 validate-input" style="height:4em" data-validate = "Valid email is required: ex@abc.xyz">
                         <input class="input100 <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -38,7 +38,7 @@ unset($__errorArgs, $__bag); ?>
                     </div><br/>					
                     
 					<label class="font-weight-bolder pl-2 text-secondary">Password:</label>                    
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
+					<div class="wrap-input100 validate-input" style="height:4em" data-validate="Password is required">
                         <input type="password" class="input100  <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

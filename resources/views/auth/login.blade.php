@@ -15,7 +15,7 @@
 					</span>
 					
                     <label class="font-weight-bolder pl-2 text-secondary">Email:</label>
-                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <div class="wrap-input100 validate-input" style="height:4em" data-validate = "Valid email is required: ex@abc.xyz">
                         <input class="input100 @error('email') is-invalid @enderror" type="text" name="email" 
                         value="{{ old('email') }}" required autocomplete="email" autofocus>
                            @error('email')
@@ -26,7 +26,7 @@
                     </div><br/>					
                     
 					<label class="font-weight-bolder pl-2 text-secondary">Password:</label>                    
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
+					<div class="wrap-input100 validate-input" style="height:4em" data-validate="Password is required">
                         <input type="password" class="input100  @error('password') is-invalid @enderror" 
                         name="password" required autocomplete="current-password">
                         @error('password')

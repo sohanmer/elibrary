@@ -59,7 +59,7 @@
                                   </td>
                                   <td class="text-center">
                                     <div class="col">                                            
-                                      <button class="btn btn-danger delete-user" data-toggle="modal" 
+                                      <button class="btn btn-danger delete-user" style="width:70px" data-toggle="modal" 
                                               data-item="<?php echo e(route('users.destroy',$user->id)); ?>" 
                                               data-target="#delete-user">Delete
                                       </button>
@@ -74,8 +74,8 @@
               </div>
           </div>
       </div>
-</div>
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    </div>
+
 </div>
 </div>
 <script>
