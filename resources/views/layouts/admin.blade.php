@@ -68,11 +68,11 @@
                 Are You Sure?
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width:70px">Cancel</button>
                 <form id="delete-form"  method="POST">
                         @csrf
                         @method('delete')
-                        <button type="submit" class="btn btn-danger" >Delete</button>
+                        <button type="submit" class="btn btn-danger" style="width:70px" >Delete</button>
                 </form>
                 </div>
             </div>
@@ -91,11 +91,11 @@
               Are You Sure?
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-secondary" style="width:70px" data-dismiss="modal">Cancel</button>
               <form id="user-delete"  method="POST">
                     @csrf
                     @method('delete')
-                    <button type="submit" class="btn btn-danger" >Delete</button>
+                    <button type="submit" style="width:70px" class="btn btn-danger" >Delete</button>
               </form>
             </div>
           </div>
