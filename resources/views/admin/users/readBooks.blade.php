@@ -33,7 +33,7 @@
                                 @if($flag==0)
                                     <div class="col-md-3 col-sm-6 pb-4">
                                         <div class="card card-block h-100"  style="position:relative">
-                                            <img src="{{asset('storage/thumbnails/'.$book->thumbnail)}}" alt="{{$book->name}}" style="padding: 10px 15px 0px 15px">
+                                            <img src="{{asset('images/thumbnails/'.$book->thumbnail)}}" alt="{{$book->name}}" style="padding: 10px 15px 0px 15px">
                                             <div class="card-body text-primary">
                                                 <h5 class="card-title ">
                                                     <b class="">{{ \Illuminate\Support\Str::limit($book->name, 20, $end='...') }}</b>

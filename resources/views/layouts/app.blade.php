@@ -13,11 +13,12 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{asset('forms/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
     <script src="{{asset('forms/js/main.js')}}"></script>
+   
     
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/9c4f9ad04a.js" crossorigin="anonymous"></script>
+    {{-- <script src="https://kit.fontawesome.com/9c4f9ad04a.js" crossorigin="anonymous"></script> --}}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

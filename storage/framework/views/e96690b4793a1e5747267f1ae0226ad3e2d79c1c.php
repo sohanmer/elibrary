@@ -19,7 +19,7 @@
     <link href="<?php echo e(asset('/main.css')); ?>" rel="stylesheet"></head>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/9c4f9ad04a.js" crossorigin="anonymous"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
@@ -68,11 +68,11 @@
                 Are You Sure?
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width:70px">Cancel</button>
                 <form id="delete-form"  method="POST">
                         <?php echo csrf_field(); ?>
                         <?php echo method_field('delete'); ?>
-                        <button type="submit" class="btn btn-danger" >Delete</button>
+                        <button type="submit" class="btn btn-danger" style="width:70px" >Delete</button>
                 </form>
                 </div>
             </div>
@@ -91,11 +91,11 @@
               Are You Sure?
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-secondary" style="width:70px" data-dismiss="modal">Cancel</button>
               <form id="user-delete"  method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('delete'); ?>
-                    <button type="submit" class="btn btn-danger" >Delete</button>
+                    <button type="submit" style="width:70px" class="btn btn-danger" >Delete</button>
               </form>
             </div>
           </div>

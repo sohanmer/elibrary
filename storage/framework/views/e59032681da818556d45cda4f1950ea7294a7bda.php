@@ -73,7 +73,7 @@ unset($__errorArgs, $__bag); ?>
 
 						<div>
                             <?php if(Route::has('password.request')): ?>
-                                <a href="#" class="txt1">
+                                <a href="<?php echo e(route('password.request')); ?>" class="txt1">
                                     <?php echo e(__('Forgot Your Password?')); ?>
 
                                 </a>

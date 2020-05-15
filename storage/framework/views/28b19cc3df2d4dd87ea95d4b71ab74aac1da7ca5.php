@@ -34,7 +34,7 @@
                                 <?php if($flag==0): ?>
                                     <div class="col-md-3 col-sm-6 pb-4">
                                         <div class="card card-block h-100"  style="position:relative">
-                                            <img src="<?php echo e(asset('storage/thumbnails/'.$book->thumbnail)); ?>" alt="<?php echo e($book->name); ?>" style="padding: 10px 15px 0px 15px">
+                                            <img src="<?php echo e(asset('images/thumbnails/'.$book->thumbnail)); ?>" alt="<?php echo e($book->name); ?>" style="padding: 10px 15px 0px 15px">
                                             <div class="card-body text-primary">
                                                 <h5 class="card-title ">
                                                     <b class=""><?php echo e(\Illuminate\Support\Str::limit($book->name, 20, $end='...')); ?></b>
@@ -88,7 +88,7 @@
                                                                         <?php echo csrf_field(); ?>
                                                                         <?php echo method_field('delete'); ?>
                                                                         <input type="submit" class= "btn btn-primary" 
-                                                                        value="Already Read">
+                                                                        value="Mark As Read">
                                                                     </form>
                                                                 </div>
                                                             </div>

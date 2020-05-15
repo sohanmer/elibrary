@@ -176,6 +176,7 @@ class BookController extends Controller
                 return view('admin.users.userBook')
                                     ->with('books',$genre->books()->get())
                                     ->with('genres',Genre::all())
+                                    ->with('readBooks',Auth::user()->books->pluck('id'))
                                     ->with('bookGenres',$bookGenres)
                                     ->with('message','All '.Genre::find($request->filter)->name.' Books');
             }
@@ -183,6 +184,7 @@ class BookController extends Controller
                 return view('admin.users.userBook')
                                     ->with('books',Books::all())
                                     ->with('genres',Genre::all())
+                                    ->with('readBooks',Auth::user()->books->pluck('id'))
                                     ->with('bookGenres',$bookGenres);
             }
         }

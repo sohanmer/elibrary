@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="py-4">
+{{-- <div class="py-4">
     <div class="row justify-content-center">
         <div class="col-md-11">
             <div>
@@ -120,7 +120,17 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+@can('read-books')
+    <div id="user" books="{{$books}}" 
+                    readBooks="{{$readBooks}}" 
+                    bookGenres="{{$bookGenres}}" 
+                    path="{{asset('images/thumbnails/')}}" 
+                    genres="{{$genres}}"> 
+        
+    </div>
+@endcan
 
 
+<script type="text/javascript" src="/js/app.js"></script>
 @endsection
