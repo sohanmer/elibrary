@@ -84,5 +84,17 @@ class UserSeeder extends Seeder
             "provider_id" => 0,
             "provider" => null
         ])->assignRole('readers');
+
+        User::create([
+            "name" => 'sohan',
+            "email"=> 'sohan1510@gmail.com',
+            "email_verified_at" => '2020-04-06 09:59:42',
+            "password" => Hash::make('12345678'),
+            "remember_token" => null,
+            "created_at" => '2020-04-06 09:59:42',
+            "updated_at" => '2020-04-06 09:59:42',
+            "provider_id" => 0,
+            "provider" => null
+        ])->assignRole('readers');
     }
 }
