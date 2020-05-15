@@ -26,9 +26,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new WeeklyMails)->everyMinute();
-        $schedule->job(new ReminderMails)->everyMinute();
-        $schedule->command('queue:work')->everyMinute();
+        $schedule->job(new WeeklyMails)->daily();
+        $schedule->job(new ReminderMails)->sundays();
+        $schedule->command('queue:work')->daily();
     }
 
     /**
