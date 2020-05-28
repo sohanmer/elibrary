@@ -28,6 +28,7 @@ const Styles = styled.div`
     padding:30px 0px 0px 1rem;
     
 }
+
 @media screen and (max-width: 420px) {
     h3{
         text-align:center;
